@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhysNet", "PhysNet\PhysNet.csproj", "{00925DFB-BCE8-47BC-ACF8-C9A30B1217FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhysNet.Tests", "PhysNet.Tests\PhysNet.Tests.csproj", "{955DEAE0-980D-9D4A-AEAB-0BDD33CF7CE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00925DFB-BCE8-47BC-ACF8-C9A30B1217FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00925DFB-BCE8-47BC-ACF8-C9A30B1217FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00925DFB-BCE8-47BC-ACF8-C9A30B1217FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00925DFB-BCE8-47BC-ACF8-C9A30B1217FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955DEAE0-980D-9D4A-AEAB-0BDD33CF7CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955DEAE0-980D-9D4A-AEAB-0BDD33CF7CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955DEAE0-980D-9D4A-AEAB-0BDD33CF7CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955DEAE0-980D-9D4A-AEAB-0BDD33CF7CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3F23639-B993-44F9-8A53-D6A556508CE9}
+	EndGlobalSection
+EndGlobal
