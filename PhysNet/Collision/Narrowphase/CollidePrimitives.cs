@@ -6,7 +6,7 @@ namespace PhysNet.Collision.Narrowphase
 {
     internal static class CollidePrimitives
     {
-        public static bool Collide(Shape a, in Transform ta, Shape b, in Transform tb, out ContactManifold manifold)
+        public static bool Collide(Shape a, ITransform ta, Shape b, ITransform tb, out ContactManifold manifold)
         {
             manifold = default; manifold.Initialize(4);
 

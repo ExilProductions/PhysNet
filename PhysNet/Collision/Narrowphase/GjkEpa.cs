@@ -13,14 +13,14 @@ namespace PhysNet.Collision.Narrowphase
             public int Count;
         }
 
-        private static Vector3 Support(Shape a, in Transform ta, Shape b, in Transform tb, Vector3 dir)
+        private static Vector3 Support(Shape a, ITransform ta, Shape b, ITransform tb, Vector3 dir)
         {
             var sa = ta.TransformPoint(a.Support(ta.InverseTransformDirection(dir)));
             var sb = tb.TransformPoint(b.Support(tb.InverseTransformDirection(-dir)));
             return sa - sb;
         }
 
-        public static bool Intersect(Shape a, in Transform ta, Shape b, in Transform tb, out Vector3 normal, out float depth)
+        public static bool Intersect(Shape a, ITransform ta, Shape b, ITransform tb, out Vector3 normal, out float depth)
         {
             // GJK to detect intersection and get witness simplex
             normal = Vector3.UnitY; depth = 0;
@@ -124,7 +124,7 @@ namespace PhysNet.Collision.Narrowphase
             return true; // origin inside tetrahedron
         }
 
-        private static bool EPA(Shape a, in Transform ta, Shape b, in Transform tb, ref Simplex s, out Vector3 normal, out float depth)
+        private static bool EPA(Shape a, ITransform ta, Shape b, ITransform tb, ref Simplex s, out Vector3 normal, out float depth)
         {
             // Build polytope from simplex (tetra)
             normal = Vector3.UnitY; depth = 0;

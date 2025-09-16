@@ -1,6 +1,7 @@
 using System.Numerics;
 using PhysNet;
 using PhysNet.Dynamics;
+using PhysNet.Math;
 using PhysNet.World;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace PhysNet.Tests.World
         public void Step_GravitationalAcceleration_OnDynamicBody()
         {
             var world = new PhysicsWorld();
-            var body = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0, 10, 0));
+            var body = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0, 10, 0));
             world.AddBody(body);
             world.Step(0.016f);
             Assert.True(body.LinearVelocity.Y < 0);
@@ -22,8 +23,8 @@ namespace PhysNet.Tests.World
         public void Step_Collision_ResolvesPenetration()
         {
             var world = new PhysicsWorld();
-            var ground = Physics.CreateStaticBox(new Vector3(10, 1, 10), new Vector3(0, -1, 0));
-            var ball = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0, 0.25f, 0));
+            var ground = Physics.CreateStaticBox<Transform>(new Vector3(10, 1, 10), new Vector3(0, -1, 0));
+            var ball = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0, 0.25f, 0));
             world.AddBody(ground);
             world.AddBody(ball);
             for (int i = 0; i < 10; i++) world.Step(0.016f);
@@ -34,8 +35,8 @@ namespace PhysNet.Tests.World
         public void CollisionFiltering_Default_Allows()
         {
             var world = new PhysicsWorld();
-            var a = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0, 0, 0));
-            var b = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0.9f, 0, 0));
+            var a = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0, 0, 0));
+            var b = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0.9f, 0, 0));
             world.AddBody(a);
             world.AddBody(b);
             var before = b.Transform.Position;

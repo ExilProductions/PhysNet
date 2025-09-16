@@ -9,6 +9,10 @@ using PhysNet.Math;
 
 namespace PhysNet.World
 {
+    /// <summary>
+    /// The main physics simulation world that manages rigid bodies, collision detection, and constraint solving.
+    /// This is the primary class for running physics simulations in PhysNet.
+    /// </summary>
     public sealed class PhysicsWorld
     {
         private readonly List<RigidBody> _bodies = new();
@@ -16,10 +20,28 @@ namespace PhysNet.World
         private readonly Dictionary<int, int> _bodyToNode = new();
         private readonly List<(int a, int b)> _pairs = new();
 
+        /// <summary>
+        /// Gets or sets the gravity vector applied to all dynamic bodies.
+        /// Default is (0, -9.81, 0) representing Earth gravity.
+        /// </summary>
         public Vector3 Gravity = new(0, -9.81f, 0);
+        
+        /// <summary>
+        /// Gets or sets the number of constraint solver iterations per physics step.
+        /// If set to 0 or negative, uses the value from SolverSettings.Iterations instead.
+        /// </summary>
         public int SolverIterations = 10;
+        
+        /// <summary>
+        /// Gets the solver configuration settings for this physics world.
+        /// </summary>
         public SolverSettings SolverSettings { get; } = new();
 
+        /// <summary>
+        /// Adds a rigid body to the physics world and returns its unique identifier.
+        /// </summary>
+        /// <param name="body">The rigid body to add</param>
+        /// <returns>A unique identifier for the body that can be used to remove it later</returns>
         public int AddBody(RigidBody body)
         {
             int id = _bodies.Count;
@@ -30,6 +52,10 @@ namespace PhysNet.World
             return id;
         }
 
+        /// <summary>
+        /// Removes a rigid body from the physics world.
+        /// </summary>
+        /// <param name="id">The unique identifier of the body to remove</param>
         public void RemoveBody(int id)
         {
             if (!_bodyToNode.TryGetValue(id, out var node)) return;
@@ -51,6 +77,11 @@ namespace PhysNet.World
             return Aabb.FromCenterExtents(center, r);
         }
 
+        /// <summary>
+        /// Advances the physics simulation by one time step.
+        /// This performs velocity integration, collision detection, constraint solving, and position integration.
+        /// </summary>
+        /// <param name="dt">The time step in seconds</param>
         public void Step(float dt)
         {
             // Integrate forces

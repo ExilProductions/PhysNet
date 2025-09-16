@@ -15,7 +15,7 @@ namespace PhysNet.Tests.Stress
         {
             var world = new PhysicsWorld();
             world.SolverSettings.Iterations = 8;
-            var ground = Physics.CreateStaticBox(new Vector3(100,1,100), new Vector3(0,-1,0));
+            var ground = Physics.CreateStaticBox<Transform>(new Vector3(100,1,100), new Vector3(0,-1,0));
             world.AddBody(ground);
             for (int i = 0; i < 200; i++)
             {

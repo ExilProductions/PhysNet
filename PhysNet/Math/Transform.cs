@@ -2,44 +2,36 @@ using System.Numerics;
 
 namespace PhysNet.Math
 {
-    public struct Transform
+    /// <summary>
+    /// Represents a 3D transformation with position and rotation.
+    /// This is PhysNet's default implementation of ITransform.
+    /// </summary>
+    public struct Transform : ITransform
     {
-        public Vector3 Position;
-        public Quaternion Rotation;
+        /// <summary>
+        /// World position of the transform.
+        /// </summary>
+        public Vector3 Position { get; set; }
+        
+        /// <summary>
+        /// World rotation of the transform as a normalized quaternion.
+        /// </summary>
+        public Quaternion Rotation { get; set; }
 
+        /// <summary>
+        /// Initializes a new Transform with the specified position and rotation.
+        /// </summary>
+        /// <param name="position">World position</param>
+        /// <param name="rotation">World rotation (will be normalized)</param>
         public Transform(Vector3 position, Quaternion rotation)
         {
             Position = position;
             Rotation = Quaternion.Normalize(rotation);
         }
 
+        /// <summary>
+        /// Gets a Transform at the origin with no rotation.
+        /// </summary>
         public static Transform Identity => new(Vector3.Zero, Quaternion.Identity);
-
-        public Vector3 TransformPoint(Vector3 localPoint)
-        {
-            return Vector3.Transform(localPoint, Rotation) + Position;
-        }
-
-        public Vector3 TransformDirection(Vector3 localDirection)
-        {
-            return Vector3.Transform(localDirection, Rotation);
-        }
-
-        public Vector3 InverseTransformPoint(Vector3 worldPoint)
-        {
-            var invRot = Quaternion.Conjugate(Rotation);
-            return Vector3.Transform(worldPoint - Position, invRot);
-        }
-
-        public Vector3 InverseTransformDirection(Vector3 worldDirection)
-        {
-            var invRot = Quaternion.Conjugate(Rotation);
-            return Vector3.Transform(worldDirection, invRot);
-        }
-
-        public Matrix4x4 ToMatrix()
-        {
-            return Matrix4x4.CreateFromQuaternion(Rotation) * Matrix4x4.CreateTranslation(Position);
-        }
     }
 }

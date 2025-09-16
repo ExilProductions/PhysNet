@@ -20,9 +20,9 @@ namespace PhysNet.Tests.Dynamics
             world.SolverSettings.FrictionCombine = CombineMode.Average;
             world.SolverSettings.RestitutionCombine = CombineMode.Min;
 
-            var ground = Physics.CreateStaticBox(new Vector3(10,1,10), new Vector3(0,-1,0));
+            var ground = Physics.CreateStaticBox<Transform>(new Vector3(10,1,10), new Vector3(0,-1,0));
             // Start slightly above rest height (0.5) to avoid initial penetration/bounce artifacts
-            var ball = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0, 0.6f, 0));
+            var ball = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0, 0.6f, 0));
             ground.Shape.Friction = 0.6f; ball.Shape.Friction = 0.2f;
             ground.Shape.Restitution = 0.05f; ball.Shape.Restitution = 0.1f;
 
@@ -39,8 +39,8 @@ namespace PhysNet.Tests.Dynamics
         public void CollisionFiltering_GroupMask()
         {
             var world = new PhysicsWorld();
-            var a = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0,0,0));
-            var b = Physics.CreateDynamicSphere(0.5f, 1f, new Vector3(0.5f,0,0));
+            var a = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0,0,0));
+            var b = Physics.CreateDynamicSphere<Transform>(0.5f, 1f, new Vector3(0.5f,0,0));
             // Disallow collisions between them
             a.Mask = CollisionMask.None;
             world.AddBody(a);

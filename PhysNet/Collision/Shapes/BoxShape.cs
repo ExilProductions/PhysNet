@@ -2,16 +2,29 @@ using System.Numerics;
 
 namespace PhysNet.Collision.Shapes
 {
+    /// <summary>
+    /// A box (cuboid) collision shape defined by half-extents.
+    /// </summary>
     public sealed class BoxShape : Shape
     {
+        /// <summary>
+        /// Gets the half-extents of the box (distance from center to each face).
+        /// </summary>
         public Vector3 HalfExtents { get; }
+        
+        /// <summary>
+        /// Initializes a new BoxShape with the specified half-extents.
+        /// </summary>
+        /// <param name="halfExtents">The half-extents of the box (minimum 1e-4 per axis)</param>
         public BoxShape(Vector3 halfExtents)
         {
             HalfExtents = new Vector3(System.MathF.Max(halfExtents.X, 1e-4f), System.MathF.Max(halfExtents.Y, 1e-4f), System.MathF.Max(halfExtents.Z, 1e-4f));
         }
 
+        /// <inheritdoc/>
         public override ShapeType Type => ShapeType.Box;
 
+        /// <inheritdoc/>
         public override Vector3 Support(Vector3 direction)
         {
             return new Vector3(
@@ -21,6 +34,7 @@ namespace PhysNet.Collision.Shapes
             );
         }
 
+        /// <inheritdoc/>
         public override void ComputeInertia(float mass, out Matrix4x4 inertiaLocal, out Vector3 comLocal)
         {
             var size = HalfExtents * 2f;
@@ -38,6 +52,7 @@ namespace PhysNet.Collision.Shapes
             comLocal = Vector3.Zero;
         }
 
+        /// <inheritdoc/>
         public override Vector3 GetLocalBounds(out Vector3 min, out Vector3 max)
         {
             min = -HalfExtents;
