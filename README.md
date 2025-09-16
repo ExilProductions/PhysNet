@@ -3,8 +3,7 @@
 [![CI](https://github.com/ExilProductions/PhysNet/actions/workflows/ci.yml/badge.svg)](https://github.com/ExilProductions/PhysNet/actions/workflows/ci.yml)
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests](https://img.shields.io/badge/tests-25%2F25%20passing-brightgreen)](#testing)
-[![Version](https://img.shields.io/badge/version-0.1.1-blue)](https://github.com/ExilProductions/PhysNet/releases)
+[![Version](https://img.shields.io/badge/version-0.1.2-blue)](https://github.com/ExilProductions/PhysNet/releases)
 
 A lightweight 3D physics engine for .NET 8, written in C#.
 
@@ -23,22 +22,22 @@ A lightweight 3D physics engine for .NET 8, written in C#.
 ## Features
 
 ### Core Physics
-- ⚡ **Rigid Body Dynamics**: Support for static, kinematic, and dynamic rigid bodies
-- 🎯 **Collision Detection**: GJK/EPA-based narrow-phase collision detection with broadphase optimization using dynamic AABB trees
-- ⚖️ **Constraint Solving**: Iterative impulse-based contact solver with configurable parameters
-- 📐 **Shape Support**: Sphere, box, capsule, and cylinder collision shapes
-- 📊 **Mass Properties**: Automatic computation of inertia tensors and center of mass
+- **Rigid Body Dynamics**: Support for static, kinematic, and dynamic rigid bodies
+- **Collision Detection**: GJK/EPA-based narrow-phase collision detection with broadphase optimization using dynamic AABB trees
+- **Constraint Solving**: Iterative impulse-based contact solver with configurable parameters
+- **Shape Support**: Sphere, box, capsule, and cylinder collision shapes
+- **Mass Properties**: Automatic computation of inertia tensors and center of mass
 
 ### Architecture
-- 🔧 **Transform System**: Flexible `ITransform` interface allowing integration with custom transform implementations
-- 🧩 **Extensible Shapes**: Abstract `Shape` base class for implementing custom collision shapes
-- ⚙️ **Configurable Solver**: Adjustable solver iterations, penetration correction, and material combining modes
-- 🚫 **Collision Filtering**: Group/mask-based collision filtering system
+- **Transform System**: Flexible `ITransform` interface allowing integration with custom transform implementations
+- **Extensible Shapes**: Abstract `Shape` base class for implementing custom collision shapes
+- **Configurable Solver**: Adjustable solver iterations, penetration correction, and material combining modes
+- **Collision Filtering**: Group/mask-based collision filtering system
 
 ### Performance Features
-- 🌳 **Broadphase Culling**: Dynamic AABB tree for efficient collision pair generation
-- 💾 **Memory Efficient**: Minimal allocations during simulation steps
-- 🎯 **Specialized Collision**: Optimized sphere-sphere collision detection with GJK/EPA fallback
+- **Broadphase Culling**: Dynamic AABB tree for efficient collision pair generation
+- **Memory Efficient**: Minimal allocations during simulation steps
+- **Specialized Collision**: Optimized sphere-sphere collision detection with GJK/EPA fallback
 
 ## Quick Start
 
@@ -179,9 +178,7 @@ body.Mask = CollisionMask.All;         // What groups this body can collide with
 PhysNet includes comprehensive unit tests covering all major functionality:
 
 - **Test Coverage**: 25 tests covering collision detection, physics simulation, and math utilities
-- **Test Status**: ![Tests Passing](https://img.shields.io/badge/tests-25%2F25%20passing-brightgreen) All tests currently passing
 - **Test Framework**: xUnit with .NET 8
-- **CI Integration**: Automated testing on every push and pull request
 
 ### Running Tests
 
@@ -223,11 +220,11 @@ PhysNet.Tests/                # Comprehensive test suite
 
 ## Limitations
 
-- 🚫 **3D Only**: No 2D physics support
-- 🔺 **Convex Shapes Only**: GJK/EPA requires convex collision shapes  
-- 🔄 **Single-Threaded**: No parallel collision detection or solving
-- 🔗 **No Joints**: Only contact constraints are supported
-- 🎨 **Basic Materials**: Simple friction and restitution model
+- **3D Only**: No 2D physics support
+- **Convex Shapes Only**: GJK/EPA requires convex collision shapes  
+- **Single-Threaded**: No parallel collision detection or solving
+-  **No Joints**: Only contact constraints are supported
+- **Basic Materials**: Simple friction and restitution model
 
 ## Contributing
 
