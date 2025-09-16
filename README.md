@@ -4,6 +4,8 @@
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-0.1.2-blue)](https://github.com/ExilProductions/PhysNet/releases)
+[![NuGet](https://img.shields.io/nuget/v/PhysNet.svg)](https://www.nuget.org/packages/PhysNet/0.1.2)
+
 
 A lightweight 3D physics engine for .NET 8, written in C#.
 
@@ -18,6 +20,14 @@ A lightweight 3D physics engine for .NET 8, written in C#.
 - [Limitations](#limitations)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Quick Start
+
+Install from NuGet:
+
+```bash
+dotnet add package PhysNet --version 0.1.2
+```
 
 ## Features
 
