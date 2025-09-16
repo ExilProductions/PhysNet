@@ -1,26 +1,44 @@
 # PhysNet
 
+[![CI](https://github.com/ExilProductions/PhysNet/actions/workflows/ci.yml/badge.svg)](https://github.com/ExilProductions/PhysNet/actions/workflows/ci.yml)
+[![.NET](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests](https://img.shields.io/badge/tests-25%2F25%20passing-brightgreen)](#testing)
+[![Version](https://img.shields.io/badge/version-0.1.1-blue)](https://github.com/ExilProductions/PhysNet/releases)
+
 A lightweight 3D physics engine for .NET 8, written in C#.
+
+## Table of Contents
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Core Components](#core-components)
+- [Architecture Details](#architecture-details)
+- [Configuration](#configuration)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Limitations](#limitations)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
 ### Core Physics
-- **Rigid Body Dynamics**: Support for static, kinematic, and dynamic rigid bodies
-- **Collision Detection**: GJK/EPA-based narrow-phase collision detection with broadphase optimization using dynamic AABB trees
-- **Constraint Solving**: Iterative impulse-based contact solver with configurable parameters
-- **Shape Support**: Sphere, box, capsule, and cylinder collision shapes
-- **Mass Properties**: Automatic computation of inertia tensors and center of mass
+- ⚡ **Rigid Body Dynamics**: Support for static, kinematic, and dynamic rigid bodies
+- 🎯 **Collision Detection**: GJK/EPA-based narrow-phase collision detection with broadphase optimization using dynamic AABB trees
+- ⚖️ **Constraint Solving**: Iterative impulse-based contact solver with configurable parameters
+- 📐 **Shape Support**: Sphere, box, capsule, and cylinder collision shapes
+- 📊 **Mass Properties**: Automatic computation of inertia tensors and center of mass
 
 ### Architecture
-- **Transform System**: Flexible `ITransform` interface allowing integration with custom transform implementations
-- **Extensible Shapes**: Abstract `Shape` base class for implementing custom collision shapes
-- **Configurable Solver**: Adjustable solver iterations, penetration correction, and material combining modes
-- **Collision Filtering**: Group/mask-based collision filtering system
+- 🔧 **Transform System**: Flexible `ITransform` interface allowing integration with custom transform implementations
+- 🧩 **Extensible Shapes**: Abstract `Shape` base class for implementing custom collision shapes
+- ⚙️ **Configurable Solver**: Adjustable solver iterations, penetration correction, and material combining modes
+- 🚫 **Collision Filtering**: Group/mask-based collision filtering system
 
 ### Performance Features
-- **Broadphase Culling**: Dynamic AABB tree for efficient collision pair generation
-- **Memory Efficient**: Minimal allocations during simulation steps
-- **Specialized Collision**: Optimized sphere-sphere collision detection with GJK/EPA fallback
+- 🌳 **Broadphase Culling**: Dynamic AABB tree for efficient collision pair generation
+- 💾 **Memory Efficient**: Minimal allocations during simulation steps
+- 🎯 **Specialized Collision**: Optimized sphere-sphere collision detection with GJK/EPA fallback
 
 ## Quick Start
 
@@ -156,30 +174,99 @@ body.Mask = CollisionMask.All;         // What groups this body can collide with
 // Bodies collide if: (bodyA.Group & bodyB.Mask) != 0 && (bodyB.Group & bodyA.Mask) != 0
 ```
 
+## Testing
+
+PhysNet includes comprehensive unit tests covering all major functionality:
+
+- **Test Coverage**: 25 tests covering collision detection, physics simulation, and math utilities
+- **Test Status**: ![Tests Passing](https://img.shields.io/badge/tests-25%2F25%20passing-brightgreen) All tests currently passing
+- **Test Framework**: xUnit with .NET 8
+- **CI Integration**: Automated testing on every push and pull request
+
+### Running Tests
+
+```bash
+# Run all tests
+dotnet test
+
+# Run tests with detailed output
+dotnet test --verbosity normal
+
+# Run tests and generate coverage (requires additional setup)
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+### Test Categories
+- **Collision Detection**: GJK/EPA algorithms, broadphase culling, shape-specific tests
+- **Physics Simulation**: Rigid body dynamics, constraint solving, integration
+- **Math Utilities**: Vector operations, transformations, quaternion math
+- **World Management**: Physics world operations, collision filtering
+
 ## Project Structure
 
 ```
 PhysNet/
-├── Math/                   # Transform system and mathematical utilities
-├── Collision/
-│   ├── Shapes/            # Collision shape implementations
-│   ├── Broadphase/        # Dynamic AABB tree and culling
-│   └── Narrowphase/       # GJK/EPA collision detection
-├── Dynamics/              # Rigid body and constraint solver
-└── World/                 # Physics world and utility functions
+├── 📁 Math/                   # Transform system and mathematical utilities
+├── 📁 Collision/
+│   ├── 📁 Shapes/            # Collision shape implementations
+│   ├── 📁 Broadphase/        # Dynamic AABB tree and culling
+│   └── 📁 Narrowphase/       # GJK/EPA collision detection
+├── 📁 Dynamics/              # Rigid body and constraint solver
+└── 📁 World/                 # Physics world and utility functions
+
+PhysNet.Tests/                # Comprehensive test suite
+├── 📁 Collision/            # Collision detection tests
+├── 📁 Dynamics/             # Physics simulation tests
+├── 📁 Math/                 # Math utility tests
+└── 📁 World/                # World management tests
 ```
 
 ## Limitations
 
-- **3D Only**: No 2D physics support
-- **Convex Shapes Only**: GJK/EPA requires convex collision shapes
-- **Single-Threaded**: No parallel collision detection or solving
-- **No Joints**: Only contact constraints are supported
-- **Basic Materials**: Simple friction and restitution model
+- 🚫 **3D Only**: No 2D physics support
+- 🔺 **Convex Shapes Only**: GJK/EPA requires convex collision shapes  
+- 🔄 **Single-Threaded**: No parallel collision detection or solving
+- 🔗 **No Joints**: Only contact constraints are supported
+- 🎨 **Basic Materials**: Simple friction and restitution model
+
+## Contributing
+
+Contributions are welcome! This project follows standard GitHub workflow:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes and add tests
+4. Ensure all tests pass (`dotnet test`)
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/ExilProductions/PhysNet.git
+cd PhysNet
+
+# Restore dependencies
+dotnet restore
+
+# Build the project
+dotnet build
+
+# Run tests
+dotnet test
+```
+
+### Code Style
+- Follow standard C# conventions
+- Add XML documentation for public APIs
+- Include unit tests for new functionality
+- Maintain backwards compatibility where possible
 
 ## License
 
-This is a hobby project. See LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
 ## Technical References
 
