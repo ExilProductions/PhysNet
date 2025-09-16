@@ -167,8 +167,6 @@ PhysNet/
 │   └── Narrowphase/       # GJK/EPA collision detection
 ├── Dynamics/              # Rigid body and constraint solver
 └── World/                 # Physics world and utility functions
-
-PhysNet.Tests/             # Unit and stress tests
 ```
 
 ## Limitations
@@ -178,16 +176,6 @@ PhysNet.Tests/             # Unit and stress tests
 - **Single-Threaded**: No parallel collision detection or solving
 - **No Joints**: Only contact constraints are supported
 - **Basic Materials**: Simple friction and restitution model
-
-## Building
-
-Requires .NET 8 SDK:
-
-```bash
-dotnet build
-dotnet test
-dotnet run --project PhysNet.Benchmarks
-```
 
 ## License
 
