@@ -177,6 +177,25 @@ PhysNet/
 - **No Joints**: Only contact constraints are supported
 - **Basic Materials**: Simple friction and restitution model
 
+## Testing
+
+PhysNet includes a comprehensive test suite using xUnit. To run the tests locally:
+
+```bash
+dotnet test
+```
+
+### Continuous Integration
+
+The repository uses GitHub Actions for automated testing. The CI workflow:
+
+- Runs on every push to `main`/`master` branches and pull requests
+- Tests against .NET 8.0 on Ubuntu
+- Automatically builds the solution and runs all tests
+- Must pass before changes can be merged
+
+The CI workflow ensures code quality and prevents regressions by running all tests on every change.
+
 ## License
 
 This is a hobby project. See LICENSE file for details.
