@@ -10,6 +10,7 @@
 A lightweight 3D physics engine for .NET 8, written in C#.
 
 ## Table of Contents
+- [Installation](#installation)
 - [Features](#features)
 - [Quick Start](#quick-start)
 - [Core Components](#core-components)
@@ -21,7 +22,7 @@ A lightweight 3D physics engine for .NET 8, written in C#.
 - [Contributing](#contributing)
 - [License](#license)
 
-## Quick Start
+## Installation
 
 Install from NuGet:
 
